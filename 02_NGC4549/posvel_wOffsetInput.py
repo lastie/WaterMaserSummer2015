@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 
 data = open("data2.txt", "r")
 
-vSys = 560
+vSys = 563
 rlist = []
 vlist = []
-x0 = -11.4835 #Choose the BH center to be at 550
-y0 = -10.2454
+x0 = -12.3095 #Choose the BH center to be at 550
+y0 = -10.5324
 
 for line in data:
 	temp = line.split(",")
@@ -25,5 +25,5 @@ plt.plot(rlist, vlist, r'o')
 plt.gca().invert_xaxis()
 #plt.axis([40, -70, 500, 800])
 #plt.show()
-plt.savefig("posvel_vSys=560.png")
+plt.savefig("posvel_vSys=563.png")
 #print (rlist, vlist, drlist)

@@ -11,7 +11,7 @@ data = open("data2.txt", "r")
 #Here enter the systemic velocity and the reference position points
 x0 = 0
 y0 = 0
-vSys = 560
+vSys = 651
 
 #Read each line of the file, store each line into a temp list, access the 3rd and fifth element, calculate r, together with v store into another list
 

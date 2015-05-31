@@ -11,7 +11,7 @@ for line in data:
 	ewlist.append(eastWestOffset)
 	nslist.append(northSouthOffset)
 
-plt.plot(nslist, ewlist, 'o')
+plt.plot(ewlist, nslist, 'o')
 plt.gca().invert_xaxis()
 #plt.show()
 plt.savefig("position.png")
