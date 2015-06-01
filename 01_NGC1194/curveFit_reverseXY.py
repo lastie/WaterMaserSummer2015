@@ -3,12 +3,12 @@
 import numpy as np
 from scipy.optimize import curve_fit
 
-def func(r, X): #The independent variable has to be the first argument
-	return (X/r)**0.5
+def func(v, X): #The independent variable has to be the first argument
+	return X / (v**2)
 
 data = open("data_red.txt", "r")
-x0 = 514.182
-y0 = 509.230
+x0 = 513.942
+y0 = 509.307
 
 #Read each line of the file, store each line into a temp list, access the 3rd and fifth element, calculate r, together with v store into another list
 
@@ -40,15 +40,16 @@ G = 6.67384 * 10**(-11)
 MO = 1.989 * 10**30
 
 rarray = np.array(rlist)
-varray = np.array(vlist) * 10**3
+varray = np.array(vlist)
 drarray = np.array(drlist)
 
-popt, pcov = curve_fit(f=func, xdata=rarray, ydata=varray, sigma=drarray)
+popt, pcov = curve_fit(f=func, xdata=varray, ydata=rarray, sigma=drarray)
 print (popt)
 #print (pcov)
 
 #so the parameter is now GM/DA
 
-print (popt[0] * DA / G / MO * (4.848136805555555 * 10**(-10)))
+print (popt[0] * DA / G / MO * (4.848136805555555 * 10**(-10)) * 10**6)
 
-#This answer is 48828615.7481 Mo. Their difference isn't too drastic. It's less than 1%.
+#The answer for the reverse fit is 49273482.0005 Mo
+

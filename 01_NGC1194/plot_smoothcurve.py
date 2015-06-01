@@ -9,8 +9,8 @@ data = open('data.txt', 'r')
 rlist = []
 vlist = []
 drlist = []
-x0 = 514.182
-y0 = 509.230
+x0 = 513.942
+y0 = 509.307
 vSys = 4076
 
 for line in data:
@@ -31,27 +31,28 @@ for line in data:
 
 #Y = 9.17784456 * 10**12 * (4.84813681 * 10**(-9)) * 10**(-6) # modulated constant based on current the units of v(km/s) and theta (mas), converted from m/s and rad, respectively
 #Y = 0.04449544604779426
-Y = 9.17784456 * 10**12 #This number was only obtained based on the redshifted part of the data... so It makes sense that only that part matches
+Y = 8340577.81867925 #This number was only obtained based on the redshifted part of the data... so It makes sense that only that part matches
 # The unit of this plot should be in pixels.
-Y2 = 1.33749466* 10**13 # This is the fitted number for the blue dots
+Y2 = 13369350.20859192 # This is the fitted number for the blue dots
 
 def upperCurve(x):
-	return ( Y / x)**0.5 / 1000 + vSys
+	return ( Y / x)**0.5 + vSys
 
 def lowerCurve(x):
-	return -( Y2 / (-x))**0.5 / 1000 + vSys
+	return -( Y2 / (-x))**0.5+ vSys
 
 fig = plt.figure()
 rect = fig.patch
 rect.set_facecolor('white')
 
-plt.plot(rlist, vlist, color='black', linestyle = '', marker='o', markersize = 2)
+plt.plot(rlist, vlist, color='grey', linestyle = '', marker='o', markersize=4)
 
 i = 0
 for error in drlist:
-	circleSize = error * 15
-	plt.plot(rlist[i], vlist[i], color = 'grey', linestyle = '', marker = 'o', markersize = circleSize, alpha = 0.5, markerfacecolor = 'grey', markeredgecolor = 'grey')
-	#print (circleSize)
+	errorSize = error
+	#print (error, rlist[i])
+	plt.plot(rlist[i], vlist[i], color = 'black', linestyle = '', marker = '_', markersize = errorSize, markeredgewidth = 2, alpha = 1)
+	#print (errorSize)
 	i += 1
 
 
@@ -92,5 +93,5 @@ plt.title("Pos-vel diagram with smooth fitting curve for NGC 1194")
 
 
 #plt.show()
-plt.savefig("posvel_wFitnError.png")
+plt.savefig("posvel_wFitnErrorInLine.png")
 
