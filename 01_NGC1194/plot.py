@@ -24,13 +24,15 @@ for line in data:
 
 #Y = 9.17784456 * 10**12 * (4.84813681 * 10**(-9)) * 10**(-6) # modulated constant based on current the units of v(km/s) and theta (mas), converted from m/s and rad, respectively
 #Y = 0.04449544604779426
-Y = 
+Y = 9.17784456 * 10**12 #This number was only obtained based on the redshifted part of the data... so It makes sense that only that part matches
+# The unit of this plot should be in pixels.
+Y2 = 1.33749466* 10**13 # This is the fitted number for the blue dots
 
 def upperCurve(x):
-	return ( Y / x)**0.5 + vSys
+	return ( Y / x)**0.5 / 1000 + vSys
 
 def lowerCurve(x):
-	return -( Y / (-x))**0.5 + vSys
+	return -( Y2 / (-x))**0.5 / 1000 + vSys
 
 plt.plot(rlist, vlist, 'bo')
 
@@ -44,8 +46,26 @@ plt.plot(rlist, vlist, 'bo')
 #plt.plot(x1, y1, 'r-')
 #plt.plot(x2, y2, 'b-')
 
-#plt.plot(rlist, upperCurve(rlist))
+import numpy.ma as ma
+
+
+
+#rlist_positive = ma.masked_less_equal(rlist, 0)
+rlist_positive = ma.masked_outside(rlist, 5, 40)
+#rlist_negative = ma.masked_greater_equal(rlist, 0)
+rlist_negative = ma.masked_outside(rlist, -60, -20)
+
+print (rlist_positive)
+print (upperCurve(rlist_positive))
+
+print (rlist_negative)
+print (lowerCurve(rlist_negative))
+
+plt.plot(rlist_positive, upperCurve(rlist_positive), 'r-')
+plt.plot(rlist_negative, lowerCurve(rlist_negative), 'g-')
+plt.axis([-60, 40, 3000, 5000])
 
 plt.gca().invert_xaxis()
-plt.show()
+#plt.show()
+plt.savefig("posvel_wFit.png")
 

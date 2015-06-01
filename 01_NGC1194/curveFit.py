@@ -6,7 +6,7 @@ from scipy.optimize import curve_fit
 def func(r, X): #The independent variable has to be the first argument
 	return (X/r)**0.5
 
-data = open("data.txt", "r")
+data = open("data_blue.txt", "r")
 x0 = 514.182
 y0 = 509.230
 

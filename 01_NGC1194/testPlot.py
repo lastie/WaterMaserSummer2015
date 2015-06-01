@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-Y = 0.04449544604779426
+Y = 9.17784456 * 10**12
 vSys = 4076
 
 def upperCurve(x):
