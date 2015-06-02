@@ -50,7 +50,7 @@ plt.plot(rlist, vlist, color='grey', linestyle = '', marker='o', markersize=4)
 i = 0
 for error in drlist:
 	errorSize = error
-	#print (error, rlist[i])
+	print (error, "  ", rlist[i])
 	plt.plot(rlist[i], vlist[i], color = 'black', linestyle = '', marker = '_', markersize = errorSize, markeredgewidth = 2, alpha = 1)
 	#print (errorSize)
 	i += 1
@@ -93,5 +93,5 @@ plt.title("Pos-vel diagram with smooth fitting curve for NGC 1194")
 
 
 #plt.show()
-plt.savefig("posvel_wFitnErrorInLine.png")
+#plt.savefig("posvel_wFitnErrorInLine.png")
 
