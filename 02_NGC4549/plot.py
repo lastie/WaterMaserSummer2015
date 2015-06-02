@@ -13,5 +13,5 @@ for line in data:
 
 plt.plot(ewlist, nslist, 'o')
 plt.gca().invert_xaxis()
-#plt.show()
-plt.savefig("position.png")
+plt.show()
+#plt.savefig("position.png")

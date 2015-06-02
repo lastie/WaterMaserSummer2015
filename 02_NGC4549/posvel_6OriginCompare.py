@@ -66,7 +66,7 @@ count = 6
 switch = 0
 
 for i in range(len(vlist)):
-	if vlist[i] == 736.41:
+	if vlist[i] == 737.253:
 		switch = 1
 	if switch == 1 and count > 0:
 		vPlot.append(vlist[i])
