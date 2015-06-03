@@ -20,7 +20,7 @@ def getMass(v, r):
 
 x0 = -12.3095
 y0 = -10.5324
-vSys = 523.227
+vSys = 563.227
 
 savefile = open("massVsys=" + str(vSys) + ".csv", "w")
 
