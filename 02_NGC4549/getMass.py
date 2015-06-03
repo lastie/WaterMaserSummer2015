@@ -18,17 +18,17 @@ def getMass(v, r):
 	return 1.1* v**2 * 3.77 * r
 
 # I generated data files for the following systemic velocites:
-# x0 = -12.3095
-# y0 = -10.5324
-# vSys = 563.227
+x0 = -12.3095
+y0 = -10.5324
+vSys = 563.227
 
 # x0 = -0.097
 # y0 = -0.614
 # vSys = 700.172
 
-x0 = -2.256
-y0 = -2.927
-vSys = 663.934
+# x0 = -2.256
+# y0 = -2.927
+# vSys = 663.934
 
 
 savefile = open("massVsys=" + str(vSys) + ".csv", "w")
@@ -36,7 +36,7 @@ savefile = open("massVsys=" + str(vSys) + ".csv", "w")
 for i in range(len(vlist)):
 		x = xlist[i] - x0
 		y = ylist[i] - y0
-		v = vlist[i]
+		v = vlist[i] - vSys
 		r = (x**2 + y**2) ** 0.5
 		mass = getMass(v, r)
 		#print(v, x, y, mass)

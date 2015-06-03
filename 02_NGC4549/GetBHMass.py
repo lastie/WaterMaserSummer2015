@@ -9,9 +9,9 @@ def func(r, X): #The independent variable has to be the first argument
 data = open("data2.txt", "r")
 
 #Here enter the systemic velocity and the reference position points
-x0 = 0
-y0 = 0
-vSys = 651
+x0 = -2.256
+y0 = -2.297
+vSys = 663.934
 
 #Read each line of the file, store each line into a temp list, access the 3rd and fifth element, calculate r, together with v store into another list
 
