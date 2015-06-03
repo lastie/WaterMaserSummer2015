@@ -10,14 +10,14 @@ RA = []
 Dec = []
 
 for line in data:
-	RA.append(float(line.split()[0]) * 1000)
+	RA.append(float(line.split()[0]) * 1000*15)
 	Dec.append(float(line.split()[1]) * 1000)
 
 plt.plot(RA, Dec, 'bo', alpha=1)
-plt.axis([27000, 28000, -8000, 1000])
-#plt.axis([27400, 27600, -6000, -4000])
-#plt.axis([27400, 27600, -5500, -4000])
-#plt.axis([27450, 27550, -4680, -4610])
+#plt.axis([27000*15, 28000*15, -8000, 1000])
+#plt.axis([27400*15, 27600*15, -6000, -4000])
+#plt.axis([27400*15, 27600*15, -5500, -4000])
+#plt.axis([27450*15, 27550*15, -4680, -4610])
 
 ##################################
 
@@ -32,7 +32,7 @@ for line in data:
 	ewlist.append(eastWestOffset)
 	nslist.append(northSouthOffset)
 
-ewlist = np.array(ewlist) + 27529.1
+ewlist = np.array(ewlist) + 27532.1 * 15
 nslist = np.array(nslist) - 4631
 
 plt.plot(ewlist, nslist, color='#D05050', marker='o', alpha=0.5, linestyle='None', markeredgewidth=0)
