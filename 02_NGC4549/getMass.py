@@ -17,10 +17,19 @@ for line in data:
 def getMass(v, r):
 	return 1.1* v**2 * 3.77 * r
 
+# I generated data files for the following systemic velocites:
+# x0 = -12.3095
+# y0 = -10.5324
+# vSys = 563.227
 
-x0 = -12.3095
-y0 = -10.5324
-vSys = 563.227
+# x0 = -0.097
+# y0 = -0.614
+# vSys = 700.172
+
+x0 = -2.256
+y0 = -2.927
+vSys = 663.934
+
 
 savefile = open("massVsys=" + str(vSys) + ".csv", "w")
 
