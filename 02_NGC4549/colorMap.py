@@ -53,6 +53,7 @@ fig = plt.figure(figsize = (8, 6))
 for i in range(len(vlist)):
 	plt.plot(ewlist[i], nslist[i], marker='o', ms = 8, lw=0, mew=0, color=scalarMap.to_rgba(vlist[i]), alpha=0.5)
 
+plt.plot(1.7, -1.3, 'ro')
 # cb1 = clb.ColorbarBase(vlist, cmap=rainbow, norm=cNorm, orientation='horizontal')
 # cb1.set_label('Heliocentric Radio Velocity (km/s)')
 
@@ -62,4 +63,4 @@ plt.xlabel("East-west offest (mas)")
 plt.ylabel("North-south offest (mas)")
 
 #plt.show()
-plt.savefig('position_color.png')
+plt.savefig('position_color_wGuess.png')

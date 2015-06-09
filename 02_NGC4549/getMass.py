@@ -1,5 +1,5 @@
 #This code will calculate the Blackhole mass for each data poing, with an input of the origin: systemic velocity, x0 and y0.
-
+import numpy as np
 data = open("data2.txt", "r")
 
 vlist, xlist, ylist = [], [], []
@@ -34,12 +34,12 @@ def getMass(v, r):
 # y0 = -9.9794
 # vSys = 546.657
 
-x0 = -63.6175
-y0 = -44.0944
-vSys = 543.289
+x0 = 1.7
+y0 = -1.3
+vSys = 563
 
 
-savefile = open("massVsys=" + str(vSys) + ".csv", "w")
+savefile = open("SPmassVsys=" + str(vSys) + ".csv", "w")
 
 for i in range(len(vlist)):
 		x = xlist[i] - x0
@@ -47,6 +47,13 @@ for i in range(len(vlist)):
 		v = vlist[i] - vSys
 		r = (x**2 + y**2) ** 0.5
 		mass = getMass(v, r)
+
+		if mass != 0:
+			digi = int(np.log10(mass))
+			flag = (digi >= 6)
+		else:
+			digi = '0'
+			flag = 'CENTER'
 		#print(v, x, y, mass)
-		savefile.write(str(v) + ' ' + str(x) + ' ' + str(y) + ' ' + str(mass))
+		savefile.write(str(v) + ' ' + str(x) + ' ' + str(y) + ' ' + str(mass) + ' ' + str(digi) + ' ' + str(flag))
 		savefile.write('\n')
