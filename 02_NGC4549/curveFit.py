@@ -71,7 +71,7 @@ rarray = np.array(rlist)
 varray = np.array(vlist)
 drarray = np.array(drlist)
 
-popt, pcov = curve_fit(f=func, xdata=varray, ydata=rarray, sigma=drarray, absolute_sigma=True)
+popt, pcov = curve_fit(f=func, xdata=varray, ydata=rarray, sigma=drarray, absolute_sigma=False)
 print (popt)
 #print (pcov)
 

@@ -1,7 +1,7 @@
 # Draw a position-velocity map
 import matplotlib.pyplot as plt
 
-data = open("data2.txt", "r")
+data = open("redPurple.txt", "r")
 
 vSys = 597.358
 x0 = 3.316
@@ -25,6 +25,6 @@ for line in data:
 plt.plot(rlist, vlist, r'o')
 plt.gca().invert_xaxis()
 #plt.axis([40, -70, 500, 800])
-#plt.show()
-plt.savefig("posvel_vSys=597.358.png")
+plt.show()
+#plt.savefig("posvel_vSys=597.358.png")
 #print (rlist, vlist, drlist)
