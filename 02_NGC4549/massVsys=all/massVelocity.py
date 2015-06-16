@@ -22,6 +22,6 @@ plt.title("vSys=" + str(vSys))
 plt.xlabel("Velocity (km/s)")
 plt.ylabel("Mass (Mo)")
 
-#plt.show()
-plt.savefig("massVelocityvSys=" + str(vSys) + '.png')
+plt.show()
+#plt.savefig("massVelocityvSys=" + str(vSys) + '.png')
 

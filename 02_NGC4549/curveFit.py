@@ -2,19 +2,23 @@
 
 import numpy as np
 from scipy.optimize import curve_fit
+import matplotlib.pyplot as plt
 
-def func(v, X): #The independent variable has to be the first argument
+#def func(v, X, b): #The independent variable has to be the first argument
+#	return X / (v**2) + b
+
+def func(v, X):
 	return X / (v**2)
 
 data = open("kepPoints.txt", "r")
 #data = open("kepPoints2.txt", "r")
 #There are four points that matches, let's just use the first one vSys = 596.937
 
-# vSys = 596.937
-# x0 = 3.366
-# y0 = -1.399
-# Mass = 1305415.51381
-###########################
+vSys = 596.937
+x0 = 3.366
+y0 = -1.399
+Mass = 1305415.51381
+##########################
 
 # vSys = 597.358
 # x0 = 3.316
@@ -67,9 +71,11 @@ rarray = np.array(rlist)
 varray = np.array(vlist)
 drarray = np.array(drlist)
 
-popt, pcov = curve_fit(f=func, xdata=varray, ydata=rarray, sigma=drarray)
+popt, pcov = curve_fit(f=func, xdata=varray, ydata=rarray, sigma=drarray, absolute_sigma=True)
 print (popt)
 #print (pcov)
+
+
 
 #so the parameter is now GM/DA
 
@@ -77,3 +83,25 @@ print (popt[0] * DA / G / MO * (4.848136805555555 * 10**(-9)) * 10**6)
 
 #The answer for the reverse fit is 49273482.0005 Mo
 
+print (pcov)
+print(np.diag(pcov))
+perr = np.sqrt(np.diag(pcov))
+print(perr)
+
+print (perr[0] * DA / G / MO * (4.848136805555555 * 10**(-9)) * 10**6)
+
+#A plotting section to confirm the fitting
+
+x1 = np.arange(50, 150, 0.1)
+#y1 = func(x1, 294321.048, 2.35295932)
+y1 = func(x1, 304824.82656654)
+
+#y2 = func(varray, 294321.048, 2.35295932)
+
+plt.plot(varray, rarray, 'ro')
+plt.plot(x1, y1, c='b')
+plt.xlabel("velocity")
+plt.ylabel("offset")
+plt.show()
+
+#

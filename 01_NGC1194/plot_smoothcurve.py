@@ -92,6 +92,6 @@ plt.ylabel("Velocity (km/s)")
 plt.title("Pos-vel diagram with smooth fitting curve for NGC 1194")
 
 
-#plt.show()
+plt.show()
 #plt.savefig("posvel_wFitnErrorInLine.png")
 
